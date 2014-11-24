@@ -6,77 +6,46 @@ var getRandom = function () {
 
 var computerChoice = getRandom();
 console.log( "secret number is: " + computerChoice );
-var userChoice;
-var oldDifference;
-var newDifference;
-var userPick;
-var submit;
-
-var number = function() {
-  userPick = document.getElementById('user-entry');
-
-  submit= document.getElementById('semi-button');
 
 
-// function to prompt user to make a guess
-// and save user input
-var pick = function (e) {
-  e.preventDefault();
+var submit= document.getElementById('semi-button');
+
+//user input to be saved
+var pick = function () { 
+  var userPick = document.getElementById('user-entry');
+
   if ( !isNaN(userPick.value) && userPick.value >= 0 && userPick.value <= 100 ) {
-    userChoice = userPick.value;
+    var userChoice = userPick.value;
+    return userChoice;
+  }else {
+    document.getElementById("user-feedback").innerHTML = "Please, Entry is Invalid. Refresh Page";
+    return false;
   }
-
-  // else alert( "Please, refresh page and make a valid entry" );
-  else document.getElementById("user-feedback").innerHTML = "Please, refresh page and make a valid entry";
 }
-
-submit.addEventListener( "click", pick );
-
+var difference = function (userChoice) { //userchoice is to replace difference wherever it is called. Line 46.
+  var newDifference = Math.ceil(userChoice - computerChoice); 
+  return newDifference;
 }
-// function to find the difference between the user entry \\
-// and the comnputer's choice
-var difference = function () {
-
-	newDifference = Math.abs(userChoice - computerChoice); // difference initialization
-}
-
-// function to compare computer's choice and user's choice
-var comparison = function () {
-  if ( newDifference == 0 ) {
-    document.getElementById("user-feedback").innerHTML = "You guessed right!!!";
-  }
-
-  if ( newDifference > 0 ) {
-    document.getElementById("user-feedback").innerHTML = "You're getting hotter!";
-  }
-
-}
-
-// function to compare computer choice and user choice after first entry
-// by the user
-var newComparison = function () {
-    if ( newDifference == 0 ) {
+var newComparison = function (newDiff) {
+    console.log(newDiff);
+    if ( newDiff == 0 ) {
       document.getElementById("user-feedback").innerHTML = "You guessed right!!!";
     }
-
-    else if ( newDifference > oldDifference ) {
+    else if ( newDiff < 0 ) {
       document.getElementById("user-feedback").innerHTML = "You're getting colder, C'mon!";
     }
-
-    else if ( newDifference < oldDifference ) {
+    else {
       document.getElementById("user-feedback").innerHTML = "You're getting hotter!";
-      oldDifference = newDifference;
     }
+    // return false;
+ }
+var number = function(e) {
+  e.preventDefault();
+  var userPick = pick();
+  if (userPick != false) {
+    var diff = difference(userPick); //refer back to line 28.
+  newComparison(diff);
   }
+}
 
-// function calls
-number();
-difference();
-comparison();
-oldDifference = newDifference;
-
-// while (newDifference > 0) {
-//   pick();
-//   difference();
-//   newComparison(); 
-// }
+submit.addEventListener('click', number);
