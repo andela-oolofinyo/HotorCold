@@ -1,10 +1,23 @@
+* {
 
+  margin: 0;
+  padding: 0;
+}
 body {
 	width: 100%;
-	background:url('../img/BG3.png') no-repeat;;
-	margin: 0 auto;
+	background:url('../img/hol.png') no-repeat;
+  background-size: cover;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+
+a:hover {
+ color: white;
+}
 
 /*==================================================================
 
@@ -47,12 +60,12 @@ body {
 #centerpage {
 	list-style-type: none;
 	text-align: center;
-	border: 2px solid black;
-	height: 10em;
-	width: 20em;
+	border: 2px;
+	height: 11em;
+	width: 28em;
 	margin: 0 auto;
-	margin-top: 10%;
-	background-color: #686868;
+	margin-top:18%;
+	background-color: rgba(104, 104, 104, .2);
 }
 
 form {
@@ -65,9 +78,22 @@ form {
 label {
   font-size: 2.5em;
 	font-size: 400;
+  border: 0.5px solid #ddd;
+  background-color: rgba(238, 238, 238, .2);
 }
 
-input, #button {
+#user-entry {
+  display: block;
+  margin: 8px auto;
+  /*color: #ff1818;*/
+}
+
+#user-entry:hover{
+  border: black thin solid;
+  background:#fff;
+}
+
+input {
 	width: auto;
 	margin: 8px 10px;
 	padding: 5px 10px;
@@ -75,25 +101,35 @@ input, #button {
 	font-weight: bold;
 }
 
-input s{
+#semi-button{
+  width: auto;
+  margin: 8px 10px;
+  padding: 8px 13px;
   background-color: #eee;
+  border: 1px solid #ddd;
+  color: #333;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+input{
+  /*background-color: rgba(14, 238, 238, .4);*/
   border: 1px solid #ddd;
 }
 
 #semi-button:hover {
-  border: darkred thin solid;
+  border: #FF0000 thin solid;
   background: black;
   color: white;
 }
 
-#user-entry:hover{
- 	border: black thin solid;
- 	background:#fff;
-}
-
 #user-feedback {
-	font-size: 1.2em;
-	font-weight:500;
-	margin: 0 auto;
+	font-size: 1.7em;
+	font-weight:200;
+	margin: 0.4em auto;
 	color: black;
+  display: block;
+  padding: 2px;
+  border: 1px solid #ddd;
+  background-color: rgba(0, 255, 255, .3);/*#00FFFF;*/
 }
